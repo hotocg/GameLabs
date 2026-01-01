@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor
+  - Objects
   layers:
   - Default
   - TransparentFX
@@ -13,6 +15,8 @@ TagManager:
   - UI
   - 
   - 
+  - player
+  - projectile
   - 
   - 
   - 
@@ -33,11 +37,24 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - NPC
+  - Camera
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2766579207
+    locked: 0
+  - name: Floor
+    uniqueID: 1640737071
+    locked: 0
+  - name: Floor_Obj
+    uniqueID: 1874746461
+    locked: 0
+  - name: UI
+    uniqueID: 762600095
+    locked: 0
+  - name: Player
+    uniqueID: 2072942953
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
