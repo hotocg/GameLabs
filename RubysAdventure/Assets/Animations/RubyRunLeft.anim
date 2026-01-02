@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RubyLeft
+  m_Name: RubyRunLeft
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 1742250561, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
+      value: {fileID: 1120770573, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
     - time: 0.25
-      value: {fileID: 299477357, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
+      value: {fileID: -1440221106, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
     - time: 0.5
-      value: {fileID: 2143284854, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
+      value: {fileID: -792527568, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
     - time: 0.75
-      value: {fileID: 1821635123, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
+      value: {fileID: -1415109530, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,10 +50,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 1742250561, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
-    - {fileID: 299477357, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
-    - {fileID: 2143284854, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
-    - {fileID: 1821635123, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
+    - {fileID: 1120770573, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
+    - {fileID: -1440221106, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
+    - {fileID: -792527568, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
+    - {fileID: -1415109530, guid: aa90ca7b3817415449339377bda9fc33, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
