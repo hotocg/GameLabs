@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4422838645687078814}
   m_Layer: 0
   m_Name: CollectibleHealth
-  m_TagString: Untagged
+  m_TagString: Health
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,3 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6123f80b286fc4646a6075a30523c842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CollectEffect: {fileID: 4521083994999817703, guid: 6a1f8bc675a625e4abc76ac22d8eb745,
+    type: 3}

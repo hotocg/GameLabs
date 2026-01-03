@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Floor
-  - Objects
+  - Health
+  - Ammo
   layers:
   - Default
   - TransparentFX

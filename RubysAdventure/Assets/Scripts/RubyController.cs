@@ -16,6 +16,16 @@ public class RubyController : MonoBehaviour
     public int Health => currentHealth;
 
     /// <summary>
+    /// 最大弹药值
+    /// </summary>
+    public int MaxAmmo = 10;
+    private int currentAmmo;
+    /// <summary>
+    /// 当前弹药值
+    /// </summary>
+    public int Ammo => currentAmmo;
+
+    /// <summary>
     /// 无敌时间（秒）
     /// </summary>
     public float InvincibleTime = 2f;
@@ -52,6 +62,7 @@ public class RubyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentHealth = MaxHealth;
+        currentAmmo = MaxAmmo;
     }
 
     void Update()
@@ -119,10 +130,27 @@ public class RubyController : MonoBehaviour
     }
 
     /// <summary>
+    /// 改变弹药值
+    /// </summary>
+    /// <param name="amount"></param>
+    public void ChangeAmmo(int amount)
+    {
+        currentAmmo = Mathf.Clamp(currentAmmo + amount, 0, MaxAmmo);
+        Debug.Log($"{currentAmmo} / {MaxAmmo}");
+    }
+
+
+    /// <summary>
     /// 发射子弹
     /// </summary>
     void Launch()
     {
+        if (currentAmmo <= 0)
+        {
+            Debug.Log("弹药不足");
+            return;
+        }
+
         // 创建子弹，因为角色轴心在底部，因此子弹往上偏移，视觉效果为从角色腰部手部的位置发射
         var newProjectile = Instantiate(ProjectilePrefab, rb.position + Vector2.up * 0.5f, Quaternion.identity);
         // 获取子弹脚本
@@ -132,6 +160,7 @@ public class RubyController : MonoBehaviour
         // 播放角色发射动画
         animator.SetTrigger("Launch");
 
+        ChangeAmmo(-1);
     }
 
 }

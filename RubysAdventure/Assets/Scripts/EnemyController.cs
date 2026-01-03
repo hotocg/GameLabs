@@ -31,6 +31,14 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private bool isBroken = true;
 
+    /// <summary>
+    /// 烟雾粒子效果
+    /// </summary>
+    public ParticleSystem SmokeEffect;
+    /// <summary>
+    /// 爆炸粒子效果
+    /// </summary>
+    public ParticleSystem BurstEffect;
 
     void Start()
     {
@@ -97,9 +105,14 @@ public class EnemyController : MonoBehaviour
     public void Fix()
     {
         isBroken = false;
+
+        animator.SetTrigger("Fixed");
         // 停止刚体模拟
         rb.simulated = false;
-        animator.SetTrigger("Fixed");
+        // 停止烟雾粒子
+        SmokeEffect.Stop();
+        // 创建爆炸粒子
+        Instantiate(BurstEffect, rb.position + Vector2.up * 0.5f, Quaternion.identity);
     }
 
 

@@ -130,7 +130,8 @@ MonoBehaviour:
   MaxHealth: 5
   InvincibleTime: 2
   Speed: 4
-  ProjectilePrefab: {fileID: 0}
+  ProjectilePrefab: {fileID: 2373964976575422772, guid: 9ac2615b92eed02419ca4284621e7e89,
+    type: 3}
 --- !u!61 &2629255219644832304
 BoxCollider2D:
   m_ObjectHideFlags: 0
