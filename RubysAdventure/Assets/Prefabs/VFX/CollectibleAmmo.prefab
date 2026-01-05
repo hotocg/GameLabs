@@ -145,3 +145,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollectEffect: {fileID: 4521083994999817703, guid: 6a1f8bc675a625e4abc76ac22d8eb745,
     type: 3}
+  clipCollected: {fileID: 8300000, guid: a101eabba6588d04d9818943fd4c66ac, type: 3}

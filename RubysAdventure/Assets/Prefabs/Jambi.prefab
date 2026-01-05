@@ -165,3 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12949107f7668b428704a68d1d96e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxQuestCount: 0
+  currentCompleteCount: 0
+  clipQuestComplete: {fileID: 8300000, guid: 4bd8b0b900be0eb468a112e7ebdc573a, type: 3}
+  UIDialogBox: {fileID: 0}
+  DisplayTime: 5

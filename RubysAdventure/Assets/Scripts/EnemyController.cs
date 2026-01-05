@@ -6,6 +6,9 @@ public class EnemyController : MonoBehaviour
 {
     public float Speed = 5f;
     private Rigidbody2D rb;
+    private AudioSource audioSource;
+
+    public AudioClip clipRobotFixed;
 
     /// <summary>
     /// 是否垂直移动
@@ -40,10 +43,19 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     public ParticleSystem BurstEffect;
 
+    private void Awake()
+    {
+
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+
+        NonPlayerCharacter.Instance.MaxQuestCount++;
+
     }
 
     void Update()
@@ -95,7 +107,7 @@ public class EnemyController : MonoBehaviour
         RubyController controller = collision.gameObject.GetComponent<RubyController>();
         if (controller != null)
         {
-            controller.ChangeHealth(-1);
+            controller.ChangeHealth(-1, gameObject.tag);
         }
     }
 
@@ -113,6 +125,13 @@ public class EnemyController : MonoBehaviour
         SmokeEffect.Stop();
         // 创建爆炸粒子
         Instantiate(BurstEffect, rb.position + Vector2.up * 0.5f, Quaternion.identity);
+        // 播放音效
+        audioSource.PlayOneShot(clipRobotFixed);
+
+        NonPlayerCharacter.Instance.CurrentCompleteCount++;
+
+        Destroy(gameObject, 2f);
+
     }
 
 

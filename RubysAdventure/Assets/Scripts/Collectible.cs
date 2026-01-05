@@ -8,6 +8,10 @@ public class Collectible : MonoBehaviour
     /// 采集粒子效果
     /// </summary>
     public ParticleSystem CollectEffect;
+    /// <summary>
+    /// 采集音效
+    /// </summary>
+    public AudioClip clipCollected;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -26,12 +30,15 @@ public class Collectible : MonoBehaviour
         {
             if (controller.Health >= controller.MaxHealth) return;
             // 增加生命
-            controller.ChangeHealth(1);
+            controller.ChangeHealth(1, "Health");
         }
 
         // 创建粒子效果
         Instantiate(CollectEffect, transform.position, Quaternion.identity);
         // 销毁当前实例对象
         Destroy(gameObject);
+        // 播放音效
+        controller.PlaySound(clipCollected);
+
     }
 }

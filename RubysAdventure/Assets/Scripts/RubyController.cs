@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class RubyController : MonoBehaviour
 {
@@ -44,6 +43,7 @@ public class RubyController : MonoBehaviour
     private float vertical;
 
     Animator animator;
+    public AudioClip clipRobotFixed;
 
     /// <summary>
     /// 朝向
@@ -55,6 +55,19 @@ public class RubyController : MonoBehaviour
     /// </summary>
     public GameObject ProjectilePrefab;
 
+    /// <summary>
+    /// 音频源
+    /// </summary>
+    AudioSource audioSource;
+
+    public AudioClip clipThrowCog;
+    public AudioClip clipPlayerHit;
+    public AudioClip clipHitForEnemy_1;
+    public AudioClip clipHitForEnemy_2;
+    /// <summary>
+    /// 脚步声
+    /// </summary>
+    public AudioClip clipFootsteps;
 
 
     void Start()
@@ -63,6 +76,7 @@ public class RubyController : MonoBehaviour
         animator = GetComponent<Animator>();
         currentHealth = MaxHealth;
         currentAmmo = MaxAmmo;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -83,6 +97,11 @@ public class RubyController : MonoBehaviour
         animator.SetFloat("LookX", lookDirection.x);
         animator.SetFloat("LookY", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
+
+        if (move.magnitude > 0.1f)
+        {
+            //audioSource.PlayOneShot(clipFootsteps);
+        }
 
         if (isInvincible)
         {
@@ -128,7 +147,7 @@ public class RubyController : MonoBehaviour
     /// 改变生命值
     /// </summary>
     /// <param name="amount"></param>
-    public void ChangeHealth(int amount)
+    public void ChangeHealth(int amount, string tag = "")
     {
         if (amount < 0)
         {
@@ -140,6 +159,21 @@ public class RubyController : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, MaxHealth);
         UIHealthBar.Instance.SetValue(currentHealth / (float)MaxHealth);
+
+        switch (tag)
+        {
+            case "Damage":
+                PlaySound(clipPlayerHit);
+                break;
+            case "Enemy":
+                PlaySound(clipHitForEnemy_1);
+                break;
+            case "EnemyBoss":
+                PlaySound(clipHitForEnemy_2);
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
@@ -169,11 +203,21 @@ public class RubyController : MonoBehaviour
         // 获取子弹脚本
         var projectile = newProjectile.GetComponent<Projectile>();
         // 发射
-        projectile.Launch(lookDirection, 300f);
+        projectile.Launch(lookDirection, 500f);
         // 播放角色发射动画
         animator.SetTrigger("Launch");
 
         ChangeAmmo(-1);
+        PlaySound(clipThrowCog);
+    }
+
+    /// <summary>
+    /// 播放音频
+    /// </summary>
+    /// <param name="clip"></param>
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 
 }

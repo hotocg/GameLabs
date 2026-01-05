@@ -13,7 +13,7 @@ public class DamageZone : MonoBehaviour
         RubyController controller = collision.GetComponent<RubyController>();
         if (controller != null)
         {
-            controller.ChangeHealth(-1);
+            controller.ChangeHealth(-1, "Damage");
         }
     }
 }
